@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>＼ﾌﾌｯﾋ／</title>
+  <link rel="stylesheet" href="./style.css" type="text/css">
+  <script src="./jquery.min.js"></script>
+</head>
+
+<body>
+  <div id="auth" style="display: block;">
+    <input type="button" id="login" value="Discordでログイン" disabled />
+  </div>
+  <div id="content" style="display: none;">
+    <div id="userinfo"></div>
+    <hr />
+    <div>
+      <label>
+        送信先のCSVファイル
+        <input type="file" id="sendtofile" class="c-button" accept=".csv" />
+      </label>
+    </div>
+    <hr />
+    <div>
+      <textarea type="text" id="discord_text" placeholder="本文テンプレート" rows="10"></textarea>
+    </div>
+    <hr />
+    <div>
+      <input type="button" id="create_sample" class="c-button" value="DMメッセージのサンプル確認" />
+      <input type="button" id="create_sample_all" class="c-button" value="DMメッセージのサンプル確認(全員分)" />
+    </div>
+    <hr />
+    <input type="button" id="send_message" class="dm-button" value="DM送信実行" />
+    <hr />
+    <div id="results" style="height:400px;overflow-y:scroll;width:800px;">実行結果がここに出るよ</div>
+</body>
+
+<script src="./index.js"></script>
+
+</html>

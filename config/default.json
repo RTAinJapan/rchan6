@@ -1,0 +1,10 @@
+{
+  "clientId": "",
+  "scope": "guilds.members.read%20guilds%20identify",
+  "allowRoles": [
+    ""
+  ],
+  "guildId": "",
+  "discordToken": "",
+  "port": 80
+}

@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  rchan6:
+    image: pasta04/rchan6
+    container_name: rchan6
+    volumes:
+      - ./config:/usr/src/app/config
+      - ./data:/usr/src/app/data
+    restart: always
+    # 外向けのポート:中のポート
+    ports:
+      - 3000:80

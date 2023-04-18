@@ -1,0 +1,49 @@
+input {
+  color: black;
+  padding: 20px;
+  font-size: large;
+}
+
+.c-button {
+  border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+  border-style: solid;
+  border-width: 1px;
+  padding: 1px 7px 2px;
+  text-rendering: auto;
+  color: initial;
+  background-color: aquamarine;
+  display: inline-block;
+  text-align: start;
+  margin: 0em;
+  cursor: pointer;
+}
+
+.c-button:disabled {
+  background-color: gray;
+}
+
+.dm-button {
+  border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+  border-style: solid;
+  border-width: 1px;
+  padding: 1px 7px 2px;
+  text-rendering: auto;
+  color: white;
+  background-color: red;
+  display: inline-block;
+  text-align: start;
+  margin: 0em;
+  cursor: pointer;
+}
+
+.dm-button:disabled {
+  background-color: gray;
+}
+
+
+textarea {
+  color: black;
+  width: 600px;
+  padding: 20px;
+  font-size: large;
+}
