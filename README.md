@@ -1,6 +1,6 @@
 # Rちゃん6号
 
-DiscordでDMを送るよ
+Discord DMで何かのコードを送るよ
 要Node.js
 
 ## 下準備 1
@@ -59,6 +59,33 @@ yarn start
 config/default.json
 docker-compose.yml
 ```
+
+## クライアントの使い方
+### データの用意
+- 以下の形式のCSVファイルを用意する。UTF-8形式。
+
+```csv
+名前,Discord,DiscordID,選考,code
+Rちゃん,rchan,1234567890123,VALIDATED,901234567890123456
+スライムちゃんslimechan,2234567890123,VALIDATED,909934567890123456
+```
+
+- 本文を用意する。codeが入る部分は `{code}` とする。
+
+```
+コードを送付するよ
+
+添付画像が表示できない場合は以下のURLにアクセスしてね
+https://rtain.jp/code/?data={code}
+```
+
+### クライアント操作
+1. ブラウザから、`docker-compose.yml` に定義したportにアクセスする。
+2. Discord認証でログインする
+3. 「送信先のCSVファイル」からCSVファイルを選択
+4. 本文を入力
+5. 「DMメッセージのサンプルを確認」をクリック
+6. 問題なければ、「DM送信実行」をクリック
 
 ## ビルド
 - ソースのビルド
