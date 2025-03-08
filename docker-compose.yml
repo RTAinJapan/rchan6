@@ -1,12 +1,14 @@
-version: '3.8'
-
 services:
   rchan6:
-    image: pasta04/rchan6
+    image: ghcr.io/rtainjapan/rchan6:latest
     container_name: rchan6
-    volumes:
-      - ./config:/usr/src/app/config
-      - ./data:/usr/src/app/data
+    environment:
+      - DISCORD_CLIENT_ID=
+      - DISCORD_SCOPE=
+      - DISCORD_ALLOW_ROLES=
+      - DISCORD_GUILD_ID=
+      - DISCORD_TOKEN=
+      - PORT=80
     restart: always
     # 外向けのポート:中のポート
     ports:

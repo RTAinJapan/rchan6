@@ -1,8 +1,7 @@
 import express from 'express';
 import { parse } from 'csv-parse/sync';
-import configModule from 'config';
 import fs from 'fs-extra';
-const config: Config = configModule.util.toObject(configModule);
+import config from './config';
 
 type ExpressFunc = Parameters<typeof app.get>[1];
 type ExpressRequest = Parameters<ExpressFunc>[0];

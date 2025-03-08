@@ -1,6 +1,5 @@
 import axios from 'axios';
-import configModule from 'config';
-const config: Config = configModule.util.toObject(configModule);
+import config from './config';
 
 const main = async (token: string): Promise<{ status: 'ok' | 'ng'; message: string }> => {
   try {

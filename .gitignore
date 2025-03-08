@@ -62,10 +62,7 @@ typings/
 .next
 
 *.csv
-*.txt
-
-config/development.json
-config/development2.json
-config/production.json
-
 *.png
+
+build
+docker-compose_prod.yml

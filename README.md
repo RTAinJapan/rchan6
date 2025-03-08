@@ -1,7 +1,6 @@
 # Rちゃん6号
 
-DiscordでDMを送るよ
-要Node.js
+DiscordでDMを送る。要Node.js
 
 ## 下準備 1
 
@@ -21,56 +20,75 @@ DiscordでDMを送るよ
   - OAuth2 -> URL Generatorで以下をチェック
     - bot
     - Manage Roles
-  - 生成されたURLでアクセスし、操作対象のサーバに招待する  
+  - 生成されたURLでアクセスし、操作対象のサーバに招待する
 
 ## 下準備 2 パッケージインストール
-- yarn入れてない人は`npm install`
 
 ```shell
-yarn
+npm install
 ```
 
 ## 下準備 3 設定ファイル作る
 
-`config/default.json`に以下を適宜設定
+- 環境変数に以下を設定
 
-```json
-{
-  "clientId": "Discord ApplicationのOAuth2のClient ID",
-  "scope": "guilds.members.read%20guilds%20identify",
-  "allowRoles": ["操作を許可するロールのID"],
-  "guildId": "操作対象のサーバID",
-  "discordToken": "Discord botの認証トークン。Configに無ければ環境変数 NODE_ENV_DISCORD_TOKEN を使用する",
-  "port": 待ち受けポート番号
-}
+```
+DISCORD_CLIENT_ID=Discord ApplicationのOAuth2のClient ID
+DISCORD_SCOPE=guilds.members.read%20guilds%20identify
+DISCORD_ALLOW_ROLES=操作を許可するロールのID。複数ある場合はカンマ区切り
+DISCORD_GUILD_ID=操作対象のサーバID
+DISCORD_TOKEN=Discord botの認証トークン
+PORT=待ち受けポート番号
+```
+
+## ビルド
+
+- ソースのビルド
+
+```shell
+npm run build
 ```
 
 ## サーバー側実行
+
 - 起動したらあとはブラウザからアクセスする
-```
-yarn start
+
+```shell
+npm run start
 ```
 
 ### docker composeで起動
 
-必要なのは以下だけ。待ち受けポートは各環境に応じて修正。
-
-```
-config/default.json
-docker-compose.yml
+```shell
+docker compose up
 ```
 
-## ビルド
-- ソースのビルド
+## クライアントの使い方
+
+### データの用意
+
+- 以下の形式のCSVファイルを用意する。UTF-8形式。
+
+```csv
+名前,Discord,DiscordID,選考,code
+Rちゃん,rchan,1234567890123,VALIDATED,901234567890123456
+スライムちゃんslimechan,2234567890123,VALIDATED,909934567890123456
+```
+
+- 本文を用意する。codeが入る部分は `{code}` とする。
 
 ```
-yarn build
+コードを送付するよ
+
+添付画像が表示できない場合は以下のURLにアクセスしてね
+https://rtain.jp/code/?data={code}
 ```
 
-- Docker用のビルド
-  - 事前にpackage.jsonのユーザ名をいい感じにしておくこと
+### クライアント操作
 
-```
-yarn docker:build
-yarn docker:push
-```
+1. ブラウザから、`docker-compose.yml` に定義したportにアクセスする。
+2. Discord認証でログインする
+3. 「送信先のCSVファイル」からCSVファイルを選択
+4. 本文を入力
+5. 「DMメッセージのサンプルを確認」をクリック
+6. 問題なければ、「DM送信実行」をクリック

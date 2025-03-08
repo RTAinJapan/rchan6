@@ -5,7 +5,7 @@
     "types": [
       "node"
     ],
-    "target": "esnext",
+    "target": "es2020",
     "sourceMap": false,
     "allowJs": true,
     "noImplicitAny": false,

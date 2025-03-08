@@ -1,23 +1,19 @@
 import Discord from 'discord.js';
 import fs from 'fs-extra';
-import configModule from 'config';
-const config: Config = configModule.util.toObject(configModule);
+import config from './config';
+
 const sleep = (msec: number) => new Promise((resolve) => setTimeout(resolve, msec));
 
 const main = async (list: { message: string; discordId: string; code: string; filepath: string }[]) => {
   let status: 'ok' | 'ng' = 'ok';
   const result: string[] = [];
   try {
-    //  Discordのトークン取得
-    const token = config.discordToken ? config.discordToken : process.env.NODE_ENV_DISCORD_TOKEN;
-    if (!token) throw new Error('Discord認証トークンが指定されていません。');
-
     // Discordログイン
     /** DiscordのClientオブジェクト */
     const client = new Discord.Client({
       intents: [Discord.GatewayIntentBits.Guilds, Discord.GatewayIntentBits.GuildMembers],
     });
-    await client.login(token);
+    await client.login(config.discordToken);
     if (!client.user) throw new Error('ログインに失敗しました。');
 
     // 何か裏でいろいろしてるので準備完了を待つ
